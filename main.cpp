@@ -18,7 +18,7 @@ char board[3][3] = {
         { ' ', ' ', ' ' },
         { ' ', ' ', ' ' },
         { ' ', ' ', ' ' },
-    };
+};
 
 int main() {
     
@@ -45,19 +45,18 @@ Coord getInput(bool player1) {
         cout << "Please enter row folowed by a space and col" << endl;
         cin >> result.row;
         cin >> result.col;
-    } while (canBePlaced(result));
+    } while (!canBePlaced(result));
 
     return result;
 
 }
 
 bool canBePlaced(Coord input) {
-    // return ((input.row > 0 && input.row < 3) || (input.col > 0 && input.col < 3)) &&
-    //         (board[input.row][input.col] == ' ');
-
-    return ((input.row > 0 && input.row < 3) || (input.col > 0 && input.col < 3));
-    
+    //cout << input.row << input.col;
+    return ( (input.row >= 0 && input.row < 3) && (input.col >= 0 && input.col < 3) &&
+                (board[input.row][input.col] == ' ' ) );
             
+
 }
 
 void placeChar(bool player1, Coord input) {
