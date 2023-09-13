@@ -23,7 +23,7 @@ char board[3][3] = {
 int main() {
     
     int counter = 0;
-    cout << "TIC-TAC-TOE!\n******************" << endl;
+    cout << "Tic-TAC-TOE!\n******************" << endl;
     printBoard();
     do {
         Coord input = getInput(counter % 2 == 0);
@@ -113,6 +113,19 @@ bool checkWin() {
         if (board[row][col] == 'O') dChecks -= 1;
     }
     if (chooseWinner(dChecks)) return true;
+
+    //CHECK TIE
+    int tChecks = 0;
+    for (int row = 0; row < 3; row++) {
+        for (int col = 0; col < 3; col++) {
+            if (board[row][col] != ' ') tChecks ++;
+        }
+    }
+    if (tChecks == 9) {
+        cout << "TIE!!!!!!";
+        return true;
+    }
+
     return false;
 }
 
